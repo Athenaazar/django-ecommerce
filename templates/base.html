@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    {% block title %}{% endblock %}
+    {% block header %}{% endblock %}
     {% include 'inc/_headerRefrences.html' %}
-    {% include 'inc/header.html' %}
 </head>
 <body>
+{% include 'inc/header.html' %}
 {% block content %}{% endblock %}
 {% include 'inc/footer.html' %}
 {% block footer %}{% endblock%}

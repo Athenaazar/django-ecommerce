@@ -1,0 +1,74 @@
+/*======================================
+	01. Header CSS
+========================================*/
+/* Topbar */
+.topbar {
+	background-color: #fff;
+	border-bottom: 1px solid #e2e2e2;
+	padding: 15px 0;
+}
+
+.header.shop .topbar {
+	border: none;
+	padding: 12px 0px;
+}
+
+.header.shop .topbar p {
+	color: #ccc;
+}
+/* Topbar Left Nav */
+.header.shop .left-nav{
+	
+}
+.header.shop .top-left .list-main li:first-child{
+	padding-left:0;
+}
+.header.shop .top-left .list-main li i{
+	display: inline-block;
+	margin-right: 4px;
+	font-size: 15px;
+	color: #F7941D;
+	position: relative;
+	top: 3px;
+}
+.header.shop .right-content{
+	float:right;
+}
+.header.shop .list-main li {
+	display: inline-block;
+	color: #333;
+	font-size: 13px;
+	font-weight: 500;
+	border-right: 1px solid #f0f0f0;
+	padding: 0px 13px;
+}
+.header.shop .list-main li i {
+	display: inline-block;
+	margin-right: 4px;
+	font-size: 15px;
+	color: #F7941D;
+	position: relative;
+	top: 1px;
+}
+.header.shop .list-main li:last-child{
+	padding-right:0;
+	border:none;
+}
+.header.shop .list-main li a{
+	color:#333;
+}
+.header.shop .list-main li a:hover{
+	color:#F7941D;
+}
+.header.shop .nav li {
+	margin-right: 40px;
+	float: left;
+	position: relative;
+}
+.header.shop .nav li {
+	margin-right: 38px;
+	position: relative;
+}
+.header.shop .nav li:last-child {
+	margin: 0 !important;
+}
