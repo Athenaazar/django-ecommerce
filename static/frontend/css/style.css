@@ -1,5 +1,5 @@
 /*======================================
-	01. Header CSS
+     Header CSS
 ========================================*/
 /* Topbar */
 .topbar {
@@ -867,9 +867,175 @@
 /*======================================
 	End Header CSS
 ========================================*/
+/*======================================
+   Hero Area CSS
+========================================*/
+.hero-slider {
+	background: #fff;
+	overflow: hidden;
+}
+.hero-slider .single-slider {
+	height: auto;
+	background-image: url('images/slider-image2.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+    height: 510px;
+}
+.hero-slider .text-inner {
 
+}
+.hero-slider .hero-text {
+	padding: 0 30px;
+	margin-top:100px;
+}
+.hero-slider .hero-text h1 {
+	line-height: 50px;
+	font-size: 47px;
+	font-weight: 700;
+	color: #F7941D;
+	margin-bottom: 20px;
+}
+.hero-slider .hero-text h1 span {
+	font-size: 20px;
+	display: block;
+	margin-bottom: 12px;
+	color: #333;
+	font-weight: 700;
+	line-height: initial;
+}
+.hero-slider .hero-text p {
+	color: #333;
+	margin-bottom: 35px;
+}
+.hero-slider .hero-text .button{
+	margin:0;
+}
+.hero-slider .hero-text .btn {
+	color: #fff;
+	background: #333;
+	padding: 13px 30px;
+	line-height: initial;
+	border: none;
+	height: auto;
+	z-index: 0;
+}
+.hero-slider .hero-text .btn:hover{
+	background:#F7941D;
+	color:#fff;
+}
+/* Start Hero Area 2 CSS */
+.hero-area2{
+	position:relative;
+}
+.hero-area2 .single-slider.overlay:before{
+	background:#F7941D;
+	opacity:0;
+	visibility:hidden;
+	transform:scale(0.9);
+}
+.hero-area2 .single-slider.overlay:hover:before{
+	opacity:0.9;
+	visibility:visible;
+	transform:scale(1);
+}
+.hero-area2 .single-slider{
+	height:500px;
+	position:relative;
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+.hero-area2 .single-slider .content{
+	position:relative;
+}
+.hero-area2 .single-slider .content {
+	width: 100%;
+	padding: 15px;
+	z-index: 2;
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	transition:all 0.4s ease;
+	text-align: center;
+	padding-top: 120px;
+	opacity:0;
+	visibility:hidden;
+	transform:scale(1.1);
+}
+.hero-area2 .single-slider:hover .content{
+	opacity:1;
+	visibility:visible;
+	transform:scale(1);
+}
+.hero-area2 .single-slider .content .sub-title{
+	color:#fff;
+	text-transform: uppercase;
+	font-size:15px;
+	font-weight:500;
+}
+.hero-area2 .single-slider .content .title {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 24px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.hero-area2 .single-slider .content .des{
+	color:#fff;
+}
+.hero-area2 .single-slider .content .button{}
+.hero-area2 .single-slider .content .button .btn {
+	padding: 9px 25px;
+	border: 2px solid #fff;
+	background: transparent;
+	color: #fff;
+	margin-top: 25px;
+}
+.hero-area2 .single-slider .content .button .btn:hover{
+	background:#fff;
+	color:#333;
+	border-color:transparent;
+}
+/* Owl Nav CSS */
+.hero-area2 .owl-carousel .owl-nav {
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+	margin-top:-30px;
+}
+.hero-area2 .owl-carousel .owl-nav div {
+	height: 60px;
+	width: 40px;
+	line-height: 60px;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	font-size: 14px;
+	position: absolute;
+	margin: 0;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	padding: 0;
+	border-radius: 0;
+}
+.hero-area2 .owl-carousel .owl-nav div:hover{
+	background:#F7941D;
+	color:#fff;
+}
+.hero-area2 .owl-carousel .owl-controls .owl-nav .owl-prev{
+	left:0;
+}
+.hero-area2 .owl-carousel .owl-controls .owl-nav .owl-next{
+	right:0;
+}
+/*======================================
+   End Area CSS
+========================================*/
 /*=============================
-	20. Start Footer CSS
+	 Start Footer CSS
 ===============================*/
 .footer{
 	background:#222;
