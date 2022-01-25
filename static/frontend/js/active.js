@@ -84,6 +84,13 @@
         closeOnClick:true,
     });
 
+    /*=======================
+      Search JS JS
+    =========================*/
+    $('.top-search a').on( "click", function(){
+        $('.search-top').toggleClass('active');
+    });
+
 
 
 })(jQuery);
