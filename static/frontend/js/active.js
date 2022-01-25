@@ -37,7 +37,8 @@
 			}
 		});
 	});
-        /*=======================
+
+    /*=======================
       Popular Slider JS
     =========================*/
     $('.popular-slider').owlCarousel({
@@ -71,5 +72,18 @@
             },
         }
     });
+
+    /*====================================
+        Mobile Menu
+    ======================================*/
+    $('.menu').slicknav({
+        prependTo:".mobile-nav",
+        duration:300,
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+        closeOnClick:true,
+    });
+
+
 
 })(jQuery);
