@@ -1,5 +1,5 @@
 /*======================================
-     Header CSS
+	Header CSS
 ========================================*/
 /* Topbar */
 .topbar {
@@ -26,106 +26,6 @@
 .header .nav li a i {
 	margin-left: 6px;
 	font-size: 10px;
-}
-/* Dropdown Menu */
-.header .nav li .dropdown {
-	background: #fff;
-	width: 220px;
-	position: absolute;
-	top: 100%;
-	z-index: 999;
-	-webkit-box-shadow: 0px 3px 5px #3333334d;
-	-moz-box-shadow: 0px 3px 5px #3333334d;
-	box-shadow: 0px 3px 5px #3333334d;
-	transform-origin: 0 0 0;
-	transform: scaleY(0.2);
-	-webkit-transition: all 0.3s ease 0s;
-	-moz-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-	opacity: 0;
-	visibility: hidden;
-	padding: 10px;
-	left: 0;
-	margin: 0;
-}
-.header .nav li:hover .dropdown{
-	opacity:1;
-	visibility:visible;
-	transform:translateY(0px);
-}
-.header .nav li .dropdown li{
-	float:none;
-	margin:0;
-}
-.header .nav li .dropdown li a {
-	padding: 8px 15px;
-	color: #666;
-	display: block;
-	font-weight: 400;
-	text-transform: capitalize;
-	background: transparent;
-}
-.header .nav li .dropdown li a:before{
-	display:none;
-}
-.header .nav li .dropdown li:last-child a{
-	border-bottom:0px;
-}
-.header .nav li .dropdown li:hover a{
-	color:#fff;
-	background:#F7941D;
-}
-.header .nav li .dropdown li a:hover{
-	border-color:transparent;
-}
-.header .nav li .dropdown li i {
-	float: right;
-	margin-top: 8px;
-	font-size:10px;
-	z-index:5;
-}
-.header .nav li .dropdown.sub-dropdown {
-	background: #fff;
-    width: 220px;
-    position: absolute;
-    left: 186px;
-    top: 0;
-    z-index: 999;
-   -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: 0px 3px 5px #3333334d;
-    transform-origin: 0 0 0;
-    transform: scaleY(0.2);
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    opacity: 0;
-    visibility: hidden;
-    padding: 10px;
-}
-.header .nav li .dropdown li:hover .dropdown.sub-dropdown{
-	opacity:1;
-	visibility:visible;
-	transform:translateY(0px);
-}
-.header .nav li .dropdown.sub-dropdown li a{
-	padding: 8px 15px;
-	color: #666;
-	display: block;
-	font-weight: 400;
-	text-transform: capitalize;
-	background: transparent;
-}
-.header .nav li .dropdown li:hover .dropdown.sub-dropdown li a{
-	background:transparent;
-}
-.header .nav li .dropdown li .dropdown.sub-dropdown li a:hover{
-	color:#fff;
-	background:#F7941D;
-}
-.header .nav li .dropdown.sub-dropdown li:last-child a{
-	border-bottom:0px solid;
 }
 .mobile-search{
 	display:none;
@@ -863,10 +763,78 @@
 	background:#F7941D;
 	border-color:transparent;
 }
+/* Header Sticky */
+.header .header-inner{
+	width:100%;
+	z-index:999;
+}
+.header.sticky.off-sticky{
+	display:none;
+}
+.header.sticky .all-category{}
+.header.sticky .all-category h3{
+	cursor:pointer;
 
+}
+.header.sticky .all-category .main-category{
+	opacity:0;
+	visibility:hidden;
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	transition:all 0.4s ease;
+}
+.header.sticky .all-category:hover .main-category{
+	opacity:1;
+	visibility:visible;
+}
+.header.sticky .header-inner .nav li a {
+	color: #333;
+}
+.header.sticky.v3 .header-inner .nav li a {
+	color: #fff;
+}
+.header.sticky .header-inner .nav li:hover a{
+	color:#fff;
+}
+.header.sticky.v2 .header-inner .nav li:hover a{
+	color:#F7941D;
+}
+.header.sticky .header-inner .nav li .dropdown li a{
+	color:#333;
+}
+.header.sticky.v2 .header-inner .nav li .dropdown li a{
+	color:#333;
+}
+.header.sticky .header-inner .nav li .dropdown li a:hover{
+	color:#fff;
+}
+.header.sticky .header-inner .nav li.active a {
+	color: #fff;
+}
+.header.sticky .header-inner{
+	position:fixed;
+	top:0;
+	left:0;
+	background:#fff;
+	animation: fadeInDown 1s both 0.2s;
+	-webkit-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+	box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+	z-index:999;
+}
+.header.sticky.v3 .header-inner{
+	box-shadow:none;
+}
+.header.sticky.v3 .navbar-expand-lg .navbar-collapse{
+	animation: fadeInDown 1s both 0.2s;
+	-webkit-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+	box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 /*======================================
 	End Header CSS
 ========================================*/
+
 /*======================================
    Hero Area CSS
 ========================================*/
