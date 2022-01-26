@@ -1,3 +1,48 @@
+.btn {
+	position: relative;
+	font-weight: 500;
+	font-size:14px;
+	color: #fff;
+	background: #333;
+	display: inline-block;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	z-index: 5;
+	display: inline-block;
+	padding: 13px 32px;
+	border-radius: 0px;
+	text-transform:uppercase;
+}
+.btn:hover{
+	color:#fff;
+	background:#F7941D;
+}
+#scrollUp {
+	right: 10px;
+	z-index: 33;
+	bottom: 10px;
+	text-align: center;
+}
+#scrollUp i{
+	height: 40px;
+    width: 40px;
+    line-height: 40px;
+	background:transparent;
+    background:#222;
+    border-radius: 0;
+	font-size: 18px;
+	-webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    transition: all 500ms ease;
+	display:block;
+	color: #fff;
+	box-shadow: 0px 4px 19px #00000038;
+}
+#scrollUp i:hover{
+	background:#F7941D;
+	color:#fff;
+}
 /*======================================
 	Header CSS
 ========================================*/
@@ -2339,4 +2384,153 @@
 }
 /*======================================
    End Shop Single CSS
+========================================*/
+/*======================================
+   Login & Register CSS
+========================================*/
+.shop.login {
+	padding: 100px 0;
+}
+.shop.login .login-form h2 {
+	position:relative;
+	font-size: 35px;
+	color: #333;
+	font-weight: 400;
+	line-height: 27px;
+	text-transform: uppercase;
+	margin-bottom: 12px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+.shop.login .login-form h2:before{
+	position:absolute;
+	content:"";
+	left:50%;
+	bottom:0;
+	height:2px;
+	width:50px;
+	background:#F7941D;
+	margin-left:-25px;
+}
+.shop.login .login-form p {
+	font-size: 14px;
+	color: #333;
+	font-weight: 400;
+	text-align: center;
+	margin-bottom:50px;
+}
+.shop.login .form {
+	margin-top: 30px;
+}
+.shop.login .form .form-group {
+	margin-bottom: 22px;
+}
+.shop.login .form .form-group input {
+	width: 100%;
+	height: 45px;
+	line-height: 50px;
+	padding: 0 20px;
+	border-radius: 3px;
+	border-radius: 0px;
+	color:#333 !important;
+	border: none;
+	background:#F6F7FB;
+}
+.shop.login .form .form-group label {
+	color: #333;
+	position: relative;
+}
+.shop.login .form .form-group label span {
+	color: #ff2c18;
+	display: inline-block;
+	position: absolute;
+	right: -12px;
+	top: 4px;
+	font-size: 16px;
+}
+.shop.login .form .form-group input:hover{
+	border-color:#1308a3;
+	color:#1308a3;
+}
+.shop.login .form .form-group.login-btn {
+	margin: 0;
+}
+.shop.login .form button {
+	border: none;
+}
+.shop.login .form .btn {
+	display: inline-block;
+	margin-right: 10px;
+	height: 46px;
+	color: #fff;
+	line-height: 20px;
+}
+.shop.login .form .btn:hover{
+	background:#F7941D;
+	color:#fff;
+}
+.shop.login .login-form .checkbox {
+	text-align: left;
+	margin: 0;
+	margin-top: 20px;
+	display:inline-block;
+}
+.shop.login .login-form .checkbox label {
+	font-size: 14px;
+	font-weight: 400;
+	color: #333;
+	position: relative;
+	padding-left: 20px;
+}
+.shop.login .login-form .checkbox label:hover{
+	cursor:pointer;
+}
+.shop.login .login-form .checkbox label input{
+	display:none;
+}
+.shop.login .login-form .checkbox label::before {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 6px;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #555555;
+	border-radius: 0px;
+}
+.shop.login .login-form .checkbox label::after {
+	position: absolute;
+	content: "\f00c";
+	font-family: "Fontawesome";
+	width: 12px;
+	height: 12px;
+	line-height: 23px;
+	left: 2px;
+	top: 0px;
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(0);
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	display: block;
+	font-size: 9px;
+}
+.shop.login .login-form .checkbox label.checked::after{
+	opacity:1;
+	visibility:visible;
+	transform:scale(1);
+}
+.shop.login .login-form .lost-pass{
+	display:inline-block;
+	margin-left:25px;
+	color:#333;
+	font-size:14px;
+	font-weight:400;
+}
+.shop.login .login-form .lost-pass:hover{
+	color:#F7941D;
+}
+/*======================================
+	End Login CSS
 ========================================*/
