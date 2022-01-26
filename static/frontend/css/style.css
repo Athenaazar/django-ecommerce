@@ -1827,3 +1827,516 @@
 /*======================================
    End Pagination CSS
 ========================================*/
+
+
+/*======================================
+   Start Shop Single CSS
+========================================*/
+.shop.single{
+	padding:70px 0 100px;
+}
+.shop.single .product-gallery {
+	margin-top: 30px;
+}
+.shop.single .flexslider-thumbnails {
+	position: relative;
+}
+.shop.single .product-gallery .slides li{
+	position:relative;
+}
+.shop.single .product-gallery .slides li img{
+	width:100%;
+}
+.shop.single .flex-control-nav{
+	margin-top:15px;
+}
+.shop.single .flex-control-thumbs li {
+	width: 20%;
+	position: relative;
+	margin: 0 8px 10px -3px;
+}
+.shop.single .flex-control-thumbs li img {
+	border: none;
+	padding: 0;
+	border:1px solid transparent;
+}
+.shop.single .flex-control-thumbs li img.flex-active{
+	border-color:#F7941D;
+}
+.shop.single .flex-direction-nav{
+	display:none;
+}
+.shop.single .product-des{
+	margin-top:30px;
+}
+.shop.single .product-des .short h4 {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: -5px;
+	line-height: 28px;
+}
+.shop.single .product-des .short .description {
+	font-size: 14px;
+	color: #555555;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+}
+.shop.single .product-des {}
+.shop.single .product-des .total-review{
+	font-size:14px;
+	font-weight:500;
+	margin-left:10px;
+	display:inline-block;
+}
+.shop.single .product-des .total-review:hover{
+	color:#F7941D;
+}
+.shop.single .product-des  .rating{
+	margin-top:20px;
+	display:inline-block;
+}
+.shop.single .product-des .rating li{
+	display:inline-block;
+}
+.shop.single .product-des .rating li i{
+	color:#F7941D;
+}
+.shop.single .product-des .rating li.dark i{
+	color:#555;
+}
+.shop.single .product-des .price {
+	font-size: 20px;
+	color: #333;
+	font-weight: 600;
+	margin-top: 15px;
+}
+.shop.single .product-des .price s{
+	color:#333;
+}
+.shop.single .product-des .price span{
+	display:inline-block;
+	margin-right:15px;
+	color:#F7941D;
+}
+.shop.single .product-des .product-buy {
+	margin-top: 40px;
+}
+.shop.single .product-des .product-buy{}
+.shop.single .product-des .color {
+	display: inline-block;
+	margin-right: 50px;
+}
+.shop.single .product-des .color h4 {
+	font-size: 18px;
+	font-weight: 600;
+}
+.shop.single .product-des .color h4 span {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	margin-top: 4px;
+}
+.shop.single .product-des .color ul{
+	margin-top: 10px;
+}
+.shop.single .product-des .color ul li{
+	display:inline-block;
+	margin-right:5px;
+}
+.shop.single .product-des .color ul li:last-child{
+	margin-right:0;
+}
+.shop.single .product-des .color ul li a{
+	height:30px;
+	width:30px;
+	line-height:30px;
+	text-align:center;
+	display:block;
+	background:#333;
+}
+.shop.single .product-des .color ul li a i{
+	font-size:11px;
+	color:#fff;
+	opacity:0;
+	visibility:hidden;
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	transition:all 0.4s ease;
+}
+.shop.single .product-des .color ul li a:hover i{
+	opacity:1;
+	visibility:visible;
+}
+.shop.single .product-des .color ul li .one{
+	background:#3498db;
+}
+.shop.single .product-des .color ul li .two{
+	background:#F7941D;
+}
+.shop.single .product-des .color ul li .three{
+	background:#8e44ad;
+}
+.shop.single .product-des .color ul li .four{
+	background:#2ecc71;
+}
+/* Size */
+.shop.single .product-des .size{
+	display:inline-block;
+}
+.shop.single .product-des .size h4{
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	margin-top: 0px;
+}
+.shop.single .product-des .size ul{
+	display:inline-block;
+	margin-top: 10px;
+}
+.shop.single .product-des .size ul li {
+	display: inline-block;
+	margin-right: 5px;
+}
+.shop.single .product-des .size ul li:last-child{
+	margin-right:0;
+}
+.shop.single .product-des .size ul li a {
+	display: block;
+	height: 30px;
+	width: 36px;
+	border: 1px solid #eee;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+}
+.shop.single .product-des .size ul li a:hover{
+	color:#F7941D;
+}
+.shop.single .quantity {
+	display: inline-block;
+	margin-right: 10px;
+}
+.shop.single .quantity h6 {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 15px;
+	font-weight: 500;
+}
+.shop.single .quantity .input-group {
+	width: 151px;
+	display: inline-block;
+}
+.shop.single .quantity .button {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	display:inline-block;
+}
+.shop.single .quantity .button.minus{
+	left:0;
+	border-radius:0;
+	overflow:hidden;
+}
+.shop.single .quantity .button.plus {
+	right: 0;
+	border-radius:0;
+	overflow:hidden;
+}
+.shop.single .quantity .button .btn {
+	padding: 0;
+	width: 35px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 0px;
+	background: transparent;
+	color: #282828;
+	font-size: 12px;
+	border: none;
+}
+.shop.single .quantity .button .btn:hover{
+	color:#F7941D;
+}
+.shop.single .quantity .input-number {
+	border: 1px solid #eceded;
+	width: 100%;
+	text-align: center;
+	height: 45px;
+	border-radius: 0px;
+	overflow: hidden;
+	padding: 0px 38px;
+}
+.shop.single .add-to-cart {
+	display:inline-block;
+}
+.shop.single .add-to-cart .btn {
+	height: 45px;
+	width: auto;
+	padding: 0 42px;
+	line-height: 45px;
+	text-align: center;
+	text-transform: capitalize;
+	margin-right: 5px;
+	border-radius: 0px;
+	background: #333;
+	color: #fff;
+	display: inline-block;
+	font-weight: 500;
+}
+.shop.single .add-to-cart .btn:hover{
+	color:#fff;
+	background:#F7941D;
+}
+.shop.single .add-to-cart .btn.min {
+	padding: 0 20px;
+	font-size: 17px;
+	position: relative;
+	top: 1px;
+	line-height: 45px;
+}
+.shop.single .cat{
+	font-size: 14px;
+	font-weight: 500;
+	color:#333;
+	margin-top:30px;
+}
+.shop.single .cat a{
+	display:inline-block;
+	margin-left:10px;
+}
+.shop.single .cat a:hover{
+	color:#F7941D;
+}
+.shop.single .availability{
+	color:#333;
+	font-size:14px;
+	margin-top:6px;
+}
+/* Product Tab */
+.shop.single .product-info {
+	margin-top: 50px;
+}
+.shop.single .nav-tabs {
+	border:none;
+}
+.shop.single .nav-tabs li {
+	margin-right: 10px;
+}
+.shop.single .nav-tabs li:last-child{
+	margin-right:0;
+}
+.shop.single .nav-tabs li a {
+	border: 0px solid;
+	border-radius: 0px;
+	background: #fff;
+	color: #333;
+	padding: 10px 30px;
+	font-weight: 500;
+	font-size: 14px;
+	border: 1px solid #eee;
+}
+.shop.single .nav-tabs li a i{
+	margin-right:10px;
+}
+.shop.single .nav-tabs li a.active,
+.shop.single .nav-tabs li:hover a{
+	background:#F7941D;
+	color:#fff;
+	border-color:transparent;
+}
+.shop.single .tab-single {
+
+}
+.shop.single .single-des {
+	margin-top:35px;
+}
+.shop.single .single-des h4{
+	margin-bottom:15px;
+	font-weight:500;
+	font-size:22px;
+
+}
+.shop.single .single-des ul{}
+.shop.single .single-des ul li {
+	color: #555;
+	display: block;
+	margin-bottom: 10px;
+	position:relative;
+	padding-left:20px;
+}
+.shop.single .single-des ul li::before {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 9px;
+	height: 7px;
+	width: 7px;
+	background: #f7941d;
+	border-radius: 50%;
+}
+.shop.single .single-des p{}
+
+.shop.single .item-info {
+	width: 100%;
+}
+.shop.single .item-info tbody{}
+.shop.single .item-info tbody tr{}
+.shop.single .item-info tbody td {
+	border: 1px solid #e6e6e6;
+	padding: 10px;
+}
+.shop.single .item-info tbody strong{}
+.shop.single .ratting-main{}
+.shop.single .avg-ratting {
+	margin-bottom: 20px;
+}
+.shop.single .avg-ratting h4 {
+	font-size: 18px;
+	margin: 0;
+}
+.shop.single .avg-ratting h4 span{
+	font-size:14px;
+}
+.shop.single .single-rating {
+	margin-bottom: 20px;
+}
+.shop.single .single-rating:last-child{
+	margin:0;
+	border:none;
+	padding:0;
+}
+.shop.single .rating-author {
+	float: left;
+	margin-right: 10px;
+	padding: 20px;
+	padding-right: 10px;
+}
+.shop.single .rating-author img {
+	width: 60px;
+	border-radius: 100%;
+	height: 60px;
+}
+.shop.single .rating-des {
+	padding-left: 72px;
+	background: #f9f8f8;
+	padding: 17px 20px 17px 107px;
+}
+.shop.single .rating-des .ratings {
+	margin: 0;
+}
+.shop.single .rating-des h6 {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+}
+.shop.single .ratting-main .single-rating ul{}
+.shop.single .ratting-main .single-rating ul li{
+	display:inline-block;
+}
+.shop.single .ratting-main .single-rating ul li i{
+	color:#F7941D;
+	font-size:14px;
+}
+.shop.single .review-inner label {
+	display: inline-block;
+	margin: 0 5px 0 0;
+}
+.shop.single .review-inner .ratings {
+	overflow: visible;
+	display: inline-block;
+	margin: 0;
+}
+.shop.single .review-inner .ratings ul{
+	display:inline-block;
+}
+.shop.single .ratting-main .single-rating ul {
+	display: inline-block;
+	margin-right: 5px;
+}
+.shop.single .ratings .rate-count {
+	display: inline-block;
+	color: #666;
+	font-size: 13px;
+}
+.shop.single .comment-review {
+	margin-bottom: 30px;
+}
+.shop.single .comment-review .add-review{
+	margin-top:30px;
+}
+.shop.single .comment-review .add-review h5{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 7px;
+}
+.shop.single .comment-review .add-review p{
+	color:#333;
+}
+.shop.single .comment-review h4 {
+	font-size: 15px;
+	font-weight: 600;
+	margin-bottom: 7px;
+	margin-top:20px;
+}
+.shop.single .comment-review .review-inner{
+	margin-bottom:15px;
+	display:block;
+}
+.shop.single .comment-review .rating li {
+	display:inline-block;
+}
+.shop.single .comment-review .rating li i{
+	color:#F7941D;
+	font-size: 14px;
+}
+.shop.single .rating-des p{
+	margin-top:5px;
+}
+.shop.single .avg-ratting h4 {
+	font-size: 20px;
+	color: #333;
+}
+.shop.single .avg-ratting{}
+.shop.single .form .form-group input {
+	width: 100%;
+	height: 45px;
+	padding: 10px 20px;
+	background: #fff;
+	border: 1px solid #ddd;
+	resize: none;
+	border-radius: 0;
+	color: #333;
+}
+.shop.single .form .form-group button {
+	border: none;
+	padding: 17px 50px;
+}
+.shop.single .form .form-group textarea {
+	width: 100%;
+	height:200px;
+	padding: 20px;
+	background:#fff;
+	border:1px solid #ddd;
+	resize:none;
+	border-radius:0;
+	color:#333;
+}
+.shop.single .form .form-group label {
+	color: #333;
+	position: relative;
+}
+.shop.single .form .form-group label span {
+	color: #ff2c18;
+	display: inline-block;
+	position: absolute;
+	right: -12px;
+	top: 4px;
+	font-size: 16px;
+}
+.shop.single .review-panel{
+	margin-top:35px;
+}
+/*======================================
+   End Shop Single CSS
+========================================*/
