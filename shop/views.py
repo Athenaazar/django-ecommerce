@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def shop(request):
-    pass
+    return render(request, 'shop/shop.html')
