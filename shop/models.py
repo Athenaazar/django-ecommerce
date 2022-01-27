@@ -21,10 +21,25 @@ class Category(models.Model):
         return reverse('shop:category_filter', args={self.slug})
 
 
-class Product(models.Model):
-    category = models.ManyToManyField(Category, related_name='products')
+class Manufacturer(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Product(models.Model):
+    TAG_CHOICES = (
+        ('out-of-stock', 'Hot'),
+        ('new', 'New'),
+        ('price-dec', 'Auction'),
+    )
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
+    tag = models.CharField(max_length=300, choices=TAG_CHOICES, blank=True, null=True)
+    category = models.ManyToManyField(Category, related_name='products')
+    Manufacturer = models.ForeignKey(Manufacturer, related_name='manufacturer', on_delete=models.CASCADE)
     short_descriptions = models.TextField()
     descriptions = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=6)
@@ -60,4 +75,4 @@ class Review(models.Model):
     text = models.TextField(max_length=3000, blank=True)
 
     def __str__(self):
-        return self.user.full_name
+        return self.user.username

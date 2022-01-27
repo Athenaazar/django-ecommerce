@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Review, Category, ProductImages, ProductFeatures
+from .models import Product, Review, Category, ProductImages, ProductFeatures, Manufacturer
 
 
 class ProductImagesInline(admin.StackedInline):
@@ -19,4 +19,14 @@ class ProductModel(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryModel(admin.ModelAdmin):
+    list_filter = ('name',)
+
+
+@admin.register(Review)
+class ReviewModel(admin.ModelAdmin):
+    list_filter = ('user',)
+
+
+@admin.register(Manufacturer)
+class ManufacturerModel(admin.ModelAdmin):
     list_filter = ('name',)
