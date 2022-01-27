@@ -48,6 +48,11 @@ class ProductImages(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
 
+class ProductFeatures(models.Model):
+    product = models.ForeignKey(Product, default=None, related_name='features', on_delete=models.CASCADE)
+    text = models.CharField(max_length=400)
+
+
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
