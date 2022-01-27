@@ -25,10 +25,10 @@ class Product(models.Model):
     category = models.ManyToManyField(Category, related_name='products')
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d/')
     short_descriptions = models.TextField()
     descriptions = models.TextField()
-    price = models.IntegerField()
+    price = models.DecimalField(decimal_places=2, max_digits=6)
+    discount_price = models.FloatField(blank=True, null=True)
     quantity = models.IntegerField(default=1)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -41,6 +41,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, default=None, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
 
 class Review(models.Model):
