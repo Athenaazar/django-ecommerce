@@ -28,9 +28,13 @@ class Manufacturer(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('shop:manufacturer_filter', args={self.slug})
+
 
 class Product(models.Model):
     TAG_CHOICES = (
+        ('', ''),
         ('out-of-stock', 'Hot'),
         ('new', 'New'),
         ('price-dec', 'Auction'),
@@ -39,7 +43,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     tag = models.CharField(max_length=300, choices=TAG_CHOICES, blank=True, null=True)
     category = models.ManyToManyField(Category, related_name='products')
-    Manufacturer = models.ForeignKey(Manufacturer, related_name='manufacturer', on_delete=models.CASCADE)
+    manufacturer = models.ForeignKey(Manufacturer, related_name='pmanufacturer', on_delete=models.CASCADE)
     short_descriptions = models.TextField()
     descriptions = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=6)
@@ -56,6 +60,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product', args={self.slug})
 
 
 class ProductImages(models.Model):
