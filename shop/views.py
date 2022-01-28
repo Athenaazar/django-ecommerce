@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, Manufacturer
+from .models import Category, Product, Manufacturer, Review
 from django.urls import resolve
 from django.core.paginator import Paginator
 
@@ -28,6 +28,10 @@ def shop(request, slug=None):
 
 
 def product_details(request, slug):
+    review = Review.objects.filter(product__slug=slug)
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'shop/product-details.html', {'product': product})
-
+    if product:
+        category_slug = [pr.slug for pr in product.category.all()]
+        related_products = Product.objects.filter(available=True, category__slug__in=category_slug)
+    return render(request, 'shop/product-details.html',
+                  {'product': product, 'review': review, 'related_products': related_products})

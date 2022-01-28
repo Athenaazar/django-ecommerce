@@ -147,34 +147,20 @@
                                                     <div class="avg-ratting">
                                                         <span>Based on 1 Comments</span>
                                                     </div>
-                                                    <!-- Single Rating -->
-                                                    <div class="single-rating">
-                                                        <div class="rating-author">
-                                                            <img src="{% static 'frontend/images/products/p1.jpg' %}"
-                                                                 alt="#">
+                                                    {% for rev in review%}
+                                                        <!-- Single Rating -->
+                                                        <div class="single-rating">
+                                                            <div class="rating-author">
+                                                                <img src="{% static 'frontend/images/products/p1.jpg' %}"
+                                                                     alt="#">
+                                                            </div>
+                                                            <div class="rating-des">
+                                                                <h6>{{rev.user}}</h6>
+                                                                <p>{{rev.text}}</p>
+                                                            </div>
                                                         </div>
-                                                        <div class="rating-des">
-                                                            <h6>Naimur Rahman</h6>
-                                                            <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum
-                                                                consequat cursus. Aliquam pellentesque nulla dolor, in
-                                                                imperdiet.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ End Single Rating -->
-                                                    <!-- Single Rating -->
-                                                    <div class="single-rating">
-                                                        <div class="rating-author">
-                                                            <img src="{% static 'frontend/images/products/p1.jpg' %}"
-                                                                 alt="#">
-                                                        </div>
-                                                        <div class="rating-des">
-                                                            <h6>Advin Geri</h6>
-                                                            <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum
-                                                                consequat cursus. Aliquam pellentesque nulla dolor, in
-                                                                imperdiet.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ End Single Rating -->
+                                                        <!--/ End Single Rating -->
+                                                    {% endfor %}
                                                 </div>
                                                 <!-- Review -->
                                                 <div class="comment-review">
@@ -245,21 +231,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="owl-carousel popular-slider">
+                    {% for product in related_products%}
                     <!-- Start Single Product -->
                     <div class="single-product">
                         <div class="product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                <img class="hover-img" src="{% static 'frontend/images/products/p2.jpg' %}" alt="#">
-                                <span class="out-of-stock">Hot</span>
+                            <a href="{{product.get_absolute_url}}">
+                                <img class="default-img" src="{{product.images.first.image.url}}" alt="#">
+                                <span class="{{product.tag}}">{{product.get_tag_display}}</span>
                             </a>
                             <div class="button-head">
                                 <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                                            class=" ti-eye"></i><span>Quick Shop</span></a>
+                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{product.get_absolute_url}}"><i
+                                            class=" ti-eye"></i><span>View Product</span></a>
                                     <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                    <a title="Compare" href="#"><i
-                                            class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                                 </div>
                                 <div class="product-action-2">
                                     <a title="Add to cart" href="#">Add to cart</a>
@@ -267,99 +251,19 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+                            <h3><a href="{{product.get_absolute_url}}">{{product.name}}</a></h3>
                             <div class="product-price">
-                                <span class="old">$60.00</span>
-                                <span>$50.00</span>
+                                {% if product.discount_price %}
+                                    <span class="old">${{product.price}}</span>
+                                    <span>${{product.discount_price}}</span>
+                                {% else %}
+                                    <span>${{product.price}}</span>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                     <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                <img class="hover-img" src="{% static 'frontend/images/products/p2.jpg' %}" alt="#">
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                                            class=" ti-eye"></i><span>Quick Shop</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                    <a title="Compare" href="#"><i
-                                            class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Add to cart" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span>$50.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                <img class="hover-img" src="{% static 'frontend/images/products/p2.jpg' %}" alt="#">
-                                <span class="new">New</span>
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                                            class=" ti-eye"></i><span>Quick Shop</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                    <a title="Compare" href="#"><i
-                                            class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Add to cart" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-details.html">Awesome Pink Show</a></h3>
-                            <div class="product-price">
-                                <span>$50.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                <img class="hover-img" src="{% static 'frontend/images/products/p2.jpg' %}" alt="#">
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                                            class=" ti-eye"></i><span>Quick Shop</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                    <a title="Compare" href="#"><i
-                                            class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Add to cart" href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-                            <div class="product-price">
-                                <span>$50.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
+                    {% endfor %}
                 </div>
             </div>
         </div>
