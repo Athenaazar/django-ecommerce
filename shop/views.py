@@ -27,5 +27,7 @@ def shop(request, slug=None):
     return render(request, 'shop/shop.html', context)
 
 
-def product(request):
-    return render(request, 'shop/product-details.html')
+def product_details(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    return render(request, 'shop/product-details.html', {'product': product})
+

@@ -13,8 +13,9 @@
             <div class="col-12">
                 <div class="bread-inner">
                     <ul class="bread-list">
-                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="#">Shop Details</a></li>
+                        <li><a href="{% url 'company:home'%}">Home<i class="ti-arrow-right"></i></a></li>
+                        <li><a href="{% url 'shop:shop'%}">Shop<i class="ti-arrow-right"></i></a></li>
+                        <li class="active">Product Details</li>
                     </ul>
                 </div>
             </div>
@@ -58,16 +59,6 @@
                                     <!-- Description -->
                                     <div class="short">
                                         <h4>Nonstick Dishwasher PFOA</h4>
-                                        <div class="rating-main">
-                                            <ul class="rating">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-half-o"></i></li>
-                                                <li class="dark"><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                            <a href="#" class="total-review">(102) Review</a>
-                                        </div>
                                         <p class="price"><span class="discount">$70.00</span><s>$80.00</s> </p>
                                         <p class="description">eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in</p>
                                     </div>
@@ -148,7 +139,6 @@
                                                     <div class="col-12">
                                                         <div class="ratting-main">
                                                             <div class="avg-ratting">
-                                                                <h4>4.5 <span>(Overall)</span></h4>
                                                                 <span>Based on 1 Comments</span>
                                                             </div>
                                                             <!-- Single Rating -->
@@ -158,16 +148,6 @@
                                                                 </div>
                                                                 <div class="rating-des">
                                                                     <h6>Naimur Rahman</h6>
-                                                                    <div class="ratings">
-                                                                        <ul class="rating">
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star-half-o"></i></li>
-                                                                            <li><i class="fa fa-star-o"></i></li>
-                                                                        </ul>
-                                                                        <div class="rate-count">(<span>3.5</span>)</div>
-                                                                    </div>
                                                                     <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
                                                                 </div>
                                                             </div>
@@ -179,16 +159,6 @@
                                                                 </div>
                                                                 <div class="rating-des">
                                                                     <h6>Advin Geri</h6>
-                                                                    <div class="ratings">
-                                                                        <ul class="rating">
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                            <li><i class="fa fa-star"></i></li>
-                                                                        </ul>
-                                                                        <div class="rate-count">(<span>5.0</span>)</div>
-                                                                    </div>
                                                                     <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
                                                                 </div>
                                                             </div>
@@ -199,18 +169,6 @@
                                                             <div class="add-review">
                                                                 <h5>Add A Review</h5>
                                                                 <p>Your email address will not be published. Required fields are marked</p>
-                                                            </div>
-                                                            <h4>Your Rating</h4>
-                                                            <div class="review-inner">
-                                                                <div class="ratings">
-                                                                    <ul class="rating">
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                    </ul>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!--/ End Review -->
@@ -389,5 +347,6 @@
 {% block footer %}
 <!-- Flex Slider JS -->
 <script src="{% static 'frontend/js/flex-slider.js' %}"></script>
+<script src="{% static 'frontend/js/nicesellect.js' %}"></script>
 <script src="{% static 'shop/js/active.js' %}"></script>
 {% endblock%}
