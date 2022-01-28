@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, Manufacturer
 from django.urls import resolve
+from django.core.paginator import Paginator
 
 
 def shop(request, slug=None):
@@ -15,8 +16,11 @@ def shop(request, slug=None):
         elif url_name == 'manufacturer_filter':
             manufacture = get_object_or_404(Manufacturer, slug=slug)
             products = products.filter(manufacturer=manufacture)
+    paginator = Paginator(products, 1)  # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'products': products,
+        'products': page_obj,
         'categories': categories,
         'manufacturer': manufacturer,
     }

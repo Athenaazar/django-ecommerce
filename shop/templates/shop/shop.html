@@ -112,11 +112,15 @@
 									<!-- Pagination -->
 									<div class="pagination">
 										<ul class="pagination-list">
-											<li><a href="#"><i class="ti-arrow-left"></i></a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#"><i class="ti-arrow-right"></i></a></li>
+                                            {% if products.has_previous %}
+											    <li><a href="?page={{ products.previous_page_number }}"><i class="ti-arrow-left"></i></a></li>
+											    <li><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
+                                            {% endif %}
+											<li class="active"><a href="#">{{ products.number }}</a></li>
+                                            {% if products.has_next %}
+											    <li><a href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+											    <li><a href="?page={{ products.next_page_number }}"><i class="ti-arrow-right"></i></a></li>
+                                            {% endif %}
 										</ul>
 									</div>
 									<!--/ End Pagination -->
