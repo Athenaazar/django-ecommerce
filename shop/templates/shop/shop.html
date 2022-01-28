@@ -9,7 +9,7 @@
                 <div class="bread-inner">
                     <ul class="bread-list">
                         <li><a href="{% url 'company:home'%}">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="#">Shop</a></li>
+                        <li class="active">Shop</li>
                     </ul>
                 </div>
             </div>
@@ -37,39 +37,26 @@
                         <!-- Single Widget -->
                         <div class="single-widget recent-post">
                             <h3 class="title">Recent post</h3>
+                            {% for product in products|slice:":3" %}
                             <!-- Single Post -->
                             <div class="single-post first">
                                 <div class="image">
-                                    <img src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
+                                    <img src="{{product.images.first.image.url}}" alt="#">
                                 </div>
                                 <div class="content">
-                                    <h5><a href="#">Girls Dress</a></h5>
-                                    <p class="price">$99.50</p>
+                                    <h5><a href="{{product.get_absolute_url}}">{{product.name}}</a></h5>
+
+                                    <p class="price">
+                                     {% if product.discount_price %}
+                                        ${{product.discount_price}}
+                                    {% else %}
+                                        ${{product.price}}
+                                    {% endif %}
+                                        </p>
                                 </div>
                             </div>
                             <!-- End Single Post -->
-                            <!-- Single Post -->
-                            <div class="single-post first">
-                                <div class="image">
-                                    <img src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                </div>
-                                <div class="content">
-                                    <h5><a href="#">Women Clothings</a></h5>
-                                    <p class="price">$99.50</p>
-                                </div>
-                            </div>
-                            <!-- End Single Post -->
-                            <!-- Single Post -->
-                            <div class="single-post first">
-                                <div class="image">
-                                    <img src="{% static 'frontend/images/products/p1.jpg' %}" alt="#">
-                                </div>
-                                <div class="content">
-                                    <h5><a href="#">Man Tshirt</a></h5>
-                                    <p class="price">$99.50</p>
-                                </div>
-                            </div>
-                            <!-- End Single Post -->
+                            {% endfor %}
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
@@ -109,7 +96,13 @@
                             <div class="product-content">
                                 <h3><a href="product-details.html">{{product.name}}</a></h3>
                                 <div class="product-price">
-                                    <span>${{product.price}}</span>
+                                    {% if product.discount_price %}
+                                        <span class="old">${{product.price}}</span>
+                                        <span>${{product.discount_price}}</span>
+                                    {% else %}
+                                        <span>${{product.price}}</span>
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
