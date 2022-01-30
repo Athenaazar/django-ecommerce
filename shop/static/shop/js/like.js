@@ -11,11 +11,11 @@ $(document).ready(function(){
             headers: { "X-CSRFToken": $.cookie("csrftoken") },
             success: function (result) {
                 console.log("Success");
-                if (that.hasClass('fa fa-heart')) {
-                    that.removeClass('fa fa-heart').addClass('ti-heart');
+                if (that.hasClass('ti-heart-broken')) {
+                    that.removeClass('ti-heart-broken').addClass('ti-heart');
                     that.attr("title","Add To Wishlist");
                 } else if (that.hasClass('ti-heart')) {
-                    that.removeClass('ti-heart').addClass('fa fa-heart');
+                    that.removeClass('ti-heart').addClass('ti-heart-broken');
                     that.attr("title","Remove From Wishlist");
                 }
             },

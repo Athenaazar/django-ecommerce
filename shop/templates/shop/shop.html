@@ -89,7 +89,7 @@
                                         <a data-toggle="modal" data-target="#exampleModal" title="View Product" href="{{product.get_absolute_url}}"><i class=" ti-eye"></i><span>View Product</span></a>
                                         {% if user.is_authenticated %}
                                         {% if product.pk in wishlisted_list %}
-                                        <span id="like" attr_id="{{product.pk}}" class="fa fa-heart" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        <span id="like" attr_id="{{product.pk}}" class="ti-heart-broken" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
                                         {% else %}
                                         <span id="like" attr_id="{{product.pk}}" class="ti-heart " title="Add To Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
                                         {% endif %}
