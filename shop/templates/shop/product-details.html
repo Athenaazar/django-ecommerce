@@ -91,12 +91,15 @@
                                     <a href="#" class="btn">Add to cart</a>
                                         {% if user.is_authenticated %}
                                         {% if product.pk in wishlisted_list %}
-                                        <span id="like" attr_id="{{product.pk}}" class="fa fa-heart" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        <button class="btn min">
+                                        <span id="like" attr_id="{{product.pk}}" class="ti-heart-broken" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        </button>
                                         {% else %}
+                                        <button class="btn min">
                                         <span id="like" attr_id="{{product.pk}}" class="ti-heart " title="Add To Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        </button>
                                         {% endif %}
                                         {% endif %}
-                                    <a class="btn min"><i class="ti-heart"></i></a>
                                 </div>
                                 <p class="cat">Category :
                                     {% for cat in product.category.all %}
@@ -284,4 +287,6 @@
 <script src="{% static 'frontend/js/flex-slider.js' %}"></script>
 <script src="{% static 'frontend/js/nicesellect.js' %}"></script>
 <script src="{% static 'shop/js/active.js' %}"></script>
+<script src="{% static 'shop/js/like.js' %}"></script>
+<script src="{% static 'frontend/js/jquery.cookie.min.js' %}"></script>
 {% endblock%}

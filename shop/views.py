@@ -41,8 +41,17 @@ def product_details(request, slug):
     if product:
         category_slug = [pr.slug for pr in product.category.all()]
         related_products = Product.objects.filter(available=True, category__slug__in=category_slug)
-    return render(request, 'shop/product-details.html',
-                  {'product': product, 'review': review, 'related_products': related_products})
+    wishlisted_list = []
+    if request.user.is_authenticated:
+        wishlisted_list = list(
+            Wishlist.objects.filter(user_id=request.user).values_list('product_id', flat=True).order_by('product_id'))
+    context = {
+        'product': product,
+        'review': review,
+        'related_products': related_products,
+        'wishlisted_list': wishlisted_list
+    }
+    return render(request, 'shop/product-details.html',context)
 
 
 @login_required
