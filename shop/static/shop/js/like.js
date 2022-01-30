@@ -17,6 +17,9 @@ $(document).ready(function(){
                 } else if (that.hasClass('ti-heart')) {
                     that.removeClass('ti-heart').addClass('ti-heart-broken');
                     that.attr("title","Remove From Wishlist");
+                }else if (that.hasClass('ti-trash remove-icon')) {
+                    that.attr("title","Remove From Wishlist");
+                    $("#remove").fadeOut("normal");
                 }
             },
             error: function () {
