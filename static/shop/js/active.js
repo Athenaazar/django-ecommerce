@@ -12,5 +12,9 @@
                 controlNav: "thumbnails",
             });
     })(jQuery);
+    /*====================================
+	    Nice Select JS
+	======================================*/
+	$('select').niceSelect();
 });
 })(jQuery);

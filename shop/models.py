@@ -85,3 +85,8 @@ class Review(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)

@@ -34,3 +34,35 @@ class UserChangeForm(forms.ModelForm):
 
     def clean_password(self):
         return self.initial['password']
+
+
+class UserLoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
+class UserRegistrationForm(forms.Form):
+    username = forms.CharField(max_length=30,
+                               widget=forms.TextInput(attrs={'placeholder': 'username'}))
+    email = forms.EmailField(max_length=50,
+                             widget=forms.EmailInput(attrs={'placeholder': 'your email'}))
+    password1 = forms.CharField(max_length=50, widget=forms.PasswordInput(
+        attrs={'placeholder': 'enter your password'}))
+    password2 = forms.CharField(max_length=50, widget=forms.PasswordInput(
+        attrs={'placeholder': 'enter your confirm password'}))
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        user = User.objects.filter(email=email)
+        if user.exists():
+            raise forms.ValidationError(
+                'this email already exists ! plz enter enother one')
+        return email
+
+    def clean(self):
+        clean_data = super().clean()
+        p1 = clean_data.get('password1')
+        p2 = clean_data.get('password2')
+        if p1 and p2:
+            if p1 != p2:
+                raise forms.ValidationError('password must match')
