@@ -9,8 +9,9 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="#">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="#">Wishlist</a></li>
+							<li><a href="{% url 'company:home'%}">Home<i class="ti-arrow-right"></i></a></li>
+							<li><a href="{% url 'shop:shop' %}">Shop<i class="ti-arrow-right"></i></a></li>
+							<li class="active">Wishlist</li>
 						</ul>
 					</div>
 				</div>
@@ -20,6 +21,8 @@
 	<!-- End Breadcrumbs -->
 
 	<!-- Shopping Cart -->
+	{% if wishlist %}
+	{% for product in wishlist %}
 	<div class="shopping-cart section">
 		<div class="container">
 			<div class="row">
@@ -36,15 +39,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="image" data-title="No"><img src="{% static 'frontend/images/products/p1.jpg' %}" alt="#"></td>
+							<tr id="remove">
+								<td class="image" data-title="No"><img src="{{product.product.images.first.image.url}}" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Women Dress</a></p>
-									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+									<p class="product-name"><a href="#">{{product.product.name}}</a></p>
+									<p class="product-des">{{product.product.short_descriptions}}</p>
 								</td>
-								<td class="price" data-title="Price"><span>$110.00 </span></td>
-								<td class="total-amount" data-title="Total"><a href="#"><i class="ti-shopping-cart  remove-icon"></i></a></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+								<td class="price" data-title="Price"><span>
+									{% if product.product.discount_price %}
+                                        ${{product.product.discount_price}}
+                                    {% else %}
+                                        ${{product.product.price}}
+                                    {% endif %} </span></td>
+								<td class="total-amount"><a href="#"><i class="ti-shopping-cart remove-icon"></i></a></td>
+								<td class="action" data-title="Remove"><button>
+									<span id="like" attr_id="{{product.product.pk}}" class="ti-trash remove-icon" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+								</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -54,42 +64,25 @@
 
 		</div>
 	</div>
-	<!--/ End Shopping Cart -->
-
-
-
-
-<section class="cards">
-    {% if wishlist %}
-    {% for p in wishlist %}
-    <div class="card">
-        <div class="top">
-            <div class="label1">{{m.music_id}}</div>
-            <span class="like" id="id" attr_id="{{p.product_id.pk}}" action_url="{% url 'shop:add_to_wishlist' %}"></span>
-        </div>
-        <div class="middle">
-            <a href="https://google.com" id="link1" target="_blank">
-                <div class="img-container"><img src="{{ p.product_id.pic.url }}"></div>
-            </a>
-        </div>
-        <a href="https://google.com" id="link" target="_blank">
-            <div class="bottom">
-                <div class="label4">{{m.music_id.description}}</div>
-            </div>
-        </a>
-    </div>
     {% endfor %}
     {% else %}
-    <div class="card">
-        <div class="middle">
-            <div class="label1">Your Wishlist is empty...!</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Your Wishlist is empty...!</h2>
+                </div>
+				<div class="section-title">
+					<h5><a href="{% url 'shop:shop'%}">Go to Shop</a>
+					</h5>
+				</div>
+            </div>
         </div>
-        <div class="bottom">
-            <div class="label4"><a href="/">Go to Shop</a></div>
-        </div>
-    </div>
+	</div>
     {% endif %}
-</section>
-
-
+	<!--/ End Shopping Cart -->
 {% endblock %}
+{% block footer %}
+<script src="{% static 'shop/js/like.js' %}"></script>
+<script src="{% static 'frontend/js/jquery.cookie.min.js' %}"></script>
+{% endblock%}

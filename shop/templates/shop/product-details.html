@@ -251,10 +251,15 @@
                             </a>
                             <div class="button-head">
                                 <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{product.get_absolute_url}}"><i
-                                            class=" ti-eye"></i><span>View Product</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                </div>
+                                        <a data-toggle="modal" data-target="#exampleModal" title="View Product" href="{{product.get_absolute_url}}"><i class=" ti-eye"></i><span>View Product</span></a>
+                                        {% if user.is_authenticated %}
+                                        {% if product.pk in wishlisted_list %}
+                                        <span id="like" attr_id="{{product.pk}}" class="ti-heart-broken" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        {% else %}
+                                        <span id="like" attr_id="{{product.pk}}" class="ti-heart " title="Add To Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
+                                        {% endif %}
+                                        {% endif %}
+                            </div>
                                 <div class="product-action-2">
                                     <a title="Add to cart" href="#">Add to cart</a>
                                 </div>
