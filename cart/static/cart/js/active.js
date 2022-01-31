@@ -19,5 +19,25 @@
             $qty.val(currentVal - 1);
         }
     });
+    $("#cart_update").click(function(){
+        var attr_id = $(this).attr('attr_id')
+        var action_url = $(this).attr('action_url')
+        var that = $(this)
+
+        $.ajax({
+            url: action_url,
+            type: "POST",
+            data: {'attr_id': attr_id },
+            headers: { "X-CSRFToken": $.cookie("csrftoken") },
+            success: function (result) {
+                console.log("Success");
+            },
+            error: function () {
+                alert("Please login");
+            }
+
+        });
+    });
+
 });
 })(jQuery);

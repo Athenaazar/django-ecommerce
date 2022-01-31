@@ -28,11 +28,21 @@ class Cart:
         self.cart[product_id]['quantity'] += quantity
         self.save()
 
+    def update(self, product, quantity):
+        product_id = str(product.id)
+        if product_id not in self.cart:
+            self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
+        if 0 < self.cart[product_id]['quantity']:
+            self.cart[product_id]['quantity'] = quantity
+            self.save()
+        else:
+            self.remove(product)
+
     def save(self):
         self.session.modified = True
 
     def get_total_price(self):
-        return sum(int(item['price']) * item['quantity'] for item in self.cart.values())
+        return sum(int(float(item['price'])) * item['quantity'] for item in self.cart.values())
 
     def remove(self, product):
         product_id = str(product.id)
