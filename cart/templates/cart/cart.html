@@ -39,12 +39,12 @@
 						<tbody>
 						{% for item in cart %}
 							<tr>
-								<td class="image" data-title="No"><img src="{% static 'frontend/images/products/p1.jpg' %}" alt="#"></td>
+								<td class="image" data-title="No"><img src="{{ item.product.images.first.image.url }}" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#">{{ item.product }}</a></p>
-									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+									<p class="product-des">{{ item.product.short_descriptions }}</p>
 								</td>
-								<td class="price" data-title="Price"><span>$110.00 </span></td>
+								<td class="price" data-title="Price"><span>${{ item.price }}</span></td>
 								<td class="qty" data-title="Qty"><!-- Input Order -->
 									<div class="input-group">
 										<div class="button minus">
@@ -52,7 +52,7 @@
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{ item.quantity }}">
 										<div class="button plus">
 											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
 												<i class="ti-plus"></i>
@@ -61,7 +61,7 @@
 									</div>
 									<!--/ End Input Order -->
 								</td>
-								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
+								<td class="total-amount" data-title="Total"><span>${{ item.total_price }}</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
 						{% endfor %}

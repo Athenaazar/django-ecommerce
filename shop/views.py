@@ -4,6 +4,7 @@ from django.urls import resolve
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from cart.forms import CartAddForm
 
 
 def shop(request, slug=None):
@@ -25,11 +26,13 @@ def shop(request, slug=None):
     if request.user.is_authenticated:
         wishlisted_list = list(
             Wishlist.objects.filter(user_id=request.user).values_list('product_id', flat=True).order_by('product_id'))
+    form = CartAddForm()
     context = {
         'products': page_obj,
         'categories': categories,
         'manufacturer': manufacturer,
-        'wishlisted_list': wishlisted_list
+        'wishlisted_list': wishlisted_list,
+        'form': form
     }
 
     return render(request, 'shop/shop.html', context)

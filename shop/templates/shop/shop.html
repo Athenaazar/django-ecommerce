@@ -97,12 +97,16 @@
                                     </div>
 
                                     <div class="product-action-2">
-                                        <a title="Add to cart" href="#">Add to cart</a>
+                                        <form action="{% url 'cart:cart_add' product.id %}" method="post" id="cart-form">
+                                            {% csrf_token %}
+                                            <a title="Add to cart" href="javascript:{}" onclick="document.getElementById('cart-form').submit();">Add to cart</a>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html">{{product.name}}</a></h3>
+                                <h3><a href="{{product.get_absolute_url}}">{{product.name}}</a></h3>
                                 <div class="product-price">
                                     {% if product.discount_price %}
                                         <span class="old">${{product.price}}</span>
