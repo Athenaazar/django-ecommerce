@@ -13,10 +13,10 @@
 								<div class="left">
 									<h6>if you have any coupons, please enter them here :</h6><br>
 									<div class="coupon">
-										<form action="#" target="_blank" method="post">
+										<form action="{% url 'orders:coupon_apply' order.id %}" method="post">
 											{% csrf_token %}
 											{{ form.code }}
-											<a class="btn" href="#">Apply</a>
+											<button class="btn">Apply</button>
 										</form>
 									</div>
 								</div>

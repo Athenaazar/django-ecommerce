@@ -1,3 +1,5 @@
+import decimal
+
 from django.conf import settings
 from django.db import models
 from shop.models import Product
@@ -20,7 +22,7 @@ class Order(models.Model):
     def get_total_price(self):
         total = sum(item.get_cost() for item in self.items.all())
         if self.discount:
-            discount_price = (self.discount / 100) * total
+            discount_price = decimal.Decimal(self.discount / 100) * total
             return int(total - discount_price)
         return total
 
