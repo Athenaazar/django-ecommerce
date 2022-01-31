@@ -66,26 +66,18 @@
 					<div class="total-amount">
 						<div class="row">
 							<div class="col-lg-8 col-md-5 col-12">
-								<div class="left">
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
-										</form>
-									</div>
-								</div>
+								<h6>you can update your product quantity .</h6>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
 										<li>Cart Subtotal<span>${{ cart.get_total_price }}</span></li>
 										<li>Shipping<span>Free</span></li>
-										<li>You Save<span>$20.00</span></li>
-										<li class="last">You Pay<span>$310.00</span></li>
+										<li class="last">You Pay<span>${{ cart.get_total_price }}</span></li>
 									</ul>
 									<div class="button5">
 										<a href="{% url 'cart:cart' %}" class="btn">Update Cart</a>
-										<a href="#" class="btn">Checkout</a>
+										<a href="{% url 'orders:create' %}" class="btn">Next</a>
 										<a href="{% url 'shop:shop' %}" class="btn">Continue shopping</a>
 									</div>
 								</div>
