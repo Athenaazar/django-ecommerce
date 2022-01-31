@@ -19,7 +19,8 @@ def order_create(request):
 def detail(request, order_id):
     form = CouponForm()
     order = get_object_or_404(Order, id=order_id)
-    return render(request, 'orders/order.html', {'order': order, 'form': form})
+    price_dis = order.get_total_without_discount() - order.get_total_price()
+    return render(request, 'orders/order.html', {'order': order, 'price_dis': price_dis, 'form': form})
 
 
 def coupon_apply(request, order_id):
@@ -33,6 +34,5 @@ def coupon_apply(request, order_id):
             return redirect('orders:detail', order_id)
         order = Order.objects.get(id=order_id)
         order.discount = coupon.discount
-        print('hekkkeooekmi')
         order.save()
     return redirect('orders:detail', order_id)

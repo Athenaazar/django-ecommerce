@@ -26,6 +26,10 @@ class Order(models.Model):
             return int(total - discount_price)
         return total
 
+    def get_total_without_discount(self):
+        total = sum(item.get_cost() for item in self.items.all())
+        return total
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
