@@ -8,6 +8,12 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
+    billing_name = models.CharField(max_length=100, null=True, verbose_name='Name')
+    billing_address = models.CharField(max_length=255, null=True, verbose_name='Address')
+    billing_city = models.CharField(max_length=50, null=True, verbose_name='City')
+    billing_country = models.CharField(max_length=100, null=True, verbose_name='Country')
+    billing_post_code = models.CharField(max_length=30, null=True, verbose_name='Post Code')
+    stripe_id = models.CharField(max_length=50, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
