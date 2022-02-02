@@ -1,9 +1,9 @@
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.urls import reverse
 from cart.cart import Cart
 
-from .forms import CouponForm
+from .forms import CouponForm, OrderDetailsForm
 from .models import Order, OrderItem, Coupon
 
 
@@ -17,10 +17,20 @@ def order_create(request):
 
 
 def detail(request, order_id):
-    form = CouponForm()
     order = get_object_or_404(Order, id=order_id)
-    price_dis = order.get_total_without_discount() - order.get_total_price()
-    return render(request, 'orders/order.html', {'order': order, 'price_dis': price_dis, 'form': form})
+    if request.method == 'POST':
+        order_form = OrderDetailsForm(request.POST, instance=order)
+        if order_form.is_valid():
+            order_form.save()
+            return redirect('checkout:checkout', order_id)
+        else:
+            return redirect('orders:detail', order_id)
+    else:
+        order_form = OrderDetailsForm()
+        coupon_form = CouponForm()
+        price_dis = order.get_total_without_discount() - order.get_total_price()
+        return render(request, 'orders/order.html',
+                      {'order': order, 'price_dis': price_dis, 'coupon_form': coupon_form, 'order_form': order_form})
 
 
 def coupon_apply(request, order_id):

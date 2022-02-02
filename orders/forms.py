@@ -10,4 +10,5 @@ class CouponForm(forms.Form):
 class OrderDetailsForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('billing_name', 'billing_address', 'billing_city', 'billing_country', 'billing_post_code')
+        fields = ('billing_name', 'billing_address', 'billing_email_address', 'billing_city', 'billing_country',
+                  'billing_post_code')
