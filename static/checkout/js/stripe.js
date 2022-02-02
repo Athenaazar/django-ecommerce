@@ -1,77 +1,71 @@
-// initialise stripe functionality
+
+// Create a Stripe client.
 var stripe = Stripe('pk_test_51KO5UvJsODTnE8pPzublS0PEqyOtu4spslJiGJo4fNOV5qRvFordWelVElh6WJHmYxLZrXawIRRjDlYMRa85c136009pvo85rV');
 
-// initialise elements
+// Create an instance of Elements.
 var elements = stripe.elements();
-var card = elements.create('card');
 
-// insert element onto page
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+  base: {
+    color: '#32325d',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+  }
+};
+
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>.
 card.mount('#card-element');
 
-// capture errors and display on form
-card.addEventListener('change', ({
-    error
-}) => {
-    const displayError = document.getElementById('card-errors');
-    if (error) {
-        displayError.textContent = error.message;
-    } else {
-        displayError.textContent = '';
-    }
+// Handle real-time validation errors from the card Element.
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
 });
 
-// submit eventhandler for payment form
+// Handle form submission.
 var form = document.getElementById('payment-form');
-var errorContainer = document.getElementById('card-errors');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-// get billing details
-var name = document.getElementById('id_billing_name');
-var address = document.getElementById('id_billing_address');
-var city = document.getElementById('id_billing_city');
-// country is not coded in compatiable format for stripe, through not sent
-var postCode = document.getElementById('id_billing_post_code');
-var clientSecret = document.getElementById('payment-button');
-
-// on submit, send stripe data and wait for response
-form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    stripe.confirmCardPayment(clientSecret.getAttribute('data-secret'), {
-        payment_method: {
-            card: card,
-            billing_details: {
-                name: name.value,
-                address: {
-                    city: city.value,
-                    line1: address.value,
-                    postal_code: postCode.value,
-                }
-            }
-        }
-    }).then(function (response) {
-        // reset any previous error messages
-        errorContainer.innerHTML = '';
-
-        if (response.error) {
-            // return any error messages to console
-            errorContainer.innerHTML = '<strong>Error: </strong>';
-            errorContainer.innerHTML += response.error.message;
-        } else {
-            if (response.paymentIntent.status === 'succeeded') {
-                // pass-through stripe response
-                stripeTokenHandler(response.paymentIntent);
-            }
-        }
-    });
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error.
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server.
+      stripeTokenHandler(result.token);
+    }
+  });
 });
 
+// Submit the form with the token ID.
 function stripeTokenHandler(token) {
-    // add stripe token to shipping details form and submit
-    var form = document.getElementById('shipping-details-form');
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripe-token');
-    hiddenInput.setAttribute('value', token.id);
-    form.appendChild(hiddenInput);
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
 
-    form.submit();
+  // Submit the form
+  form.submit();
 }
