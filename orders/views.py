@@ -2,11 +2,13 @@ from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from cart.cart import Cart
+from django.contrib.auth.decorators import login_required
 
 from .forms import CouponForm, OrderDetailsForm
 from .models import Order, OrderItem, Coupon
 
 
+@login_required
 def order_create(request):
     cart = Cart(request)
     order = Order.objects.create(user=request.user)
@@ -16,6 +18,7 @@ def order_create(request):
     return redirect('orders:detail', order.id)
 
 
+@login_required
 def detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     if request.method == 'POST':
@@ -33,6 +36,7 @@ def detail(request, order_id):
                       {'order': order, 'price_dis': price_dis, 'coupon_form': coupon_form, 'order_form': order_form})
 
 
+@login_required
 def coupon_apply(request, order_id):
     now = timezone.now()
     form = CouponForm(request.POST)
