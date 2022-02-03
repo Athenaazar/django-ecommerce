@@ -7,7 +7,6 @@ from django.http import HttpResponse
 from cart.forms import CartAddForm
 
 
-
 def shop(request, slug=None):
     products = Product.objects.filter(available=True)
     categories = Category.objects.filter(is_sub=False)

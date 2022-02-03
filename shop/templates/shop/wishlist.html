@@ -34,7 +34,7 @@
 								<th>PRODUCT</th>
 								<th>NAME</th>
 								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">ADD TO CART</th>
+								<th class="text-center">VIEW PRODUCT</th>
 								<th class="text-center">REMOVE</th>
 							</tr>
 						</thead>
@@ -42,7 +42,7 @@
 							<tr id="remove">
 								<td class="image" data-title="No"><img src="{{product.product.images.first.image.url}}" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">{{product.product.name}}</a></p>
+									<p class="product-name"><a href="{{product.product.get_absolute_url}}">{{product.product.name}}</a></p>
 									<p class="product-des">{{product.product.short_descriptions}}</p>
 								</td>
 								<td class="price" data-title="Price"><span>
@@ -51,7 +51,7 @@
                                     {% else %}
                                         ${{product.product.price}}
                                     {% endif %} </span></td>
-								<td class="total-amount"><a href="#"><i class="ti-shopping-cart remove-icon"></i></a></td>
+								<td class="total-amount"><a href="{{product.product.get_absolute_url}}"><i class="ti-eye remove-icon"></i></a></td>
 								<td class="action" data-title="Remove"><button>
 									<span id="like" attr_id="{{product.product.pk}}" class="ti-trash remove-icon" title="Remove From Wishlist" action_url="{% url 'shop:add_to_wishlist' %}"></span>
 								</button></td>
