@@ -8,6 +8,7 @@ User = settings.AUTH_USER_MODEL
 class Category(models.Model):
     sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name='scategory', null=True, blank=True)
     is_sub = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
 
