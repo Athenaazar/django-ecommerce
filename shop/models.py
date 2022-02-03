@@ -52,6 +52,7 @@ class Product(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     quantity = models.IntegerField(default=1)
     available = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
