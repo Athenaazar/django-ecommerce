@@ -46,3 +46,7 @@ def register(request):
 def user_logout(request):
     logout(request)
     return redirect('company:home')
+
+
+def profile(request):
+    return render(request, 'accounts/profile.html')
