@@ -1,11 +1,13 @@
 from django.shortcuts import render
 
-from shop.models import Product
+from shop.models import Product, Category
 
 
 def home(request):
     products = Product.objects.filter(available=True)
+    categories = Category.objects.filter(is_sub=False, is_featured=True)
     context = {
-        'products': products
+        'products': products,
+        'categories': categories,
     }
     return render(request, 'company/home.html', context)
