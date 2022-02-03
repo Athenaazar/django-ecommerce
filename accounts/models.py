@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from .managers import MyUserManager
+from django.db.models.signals import post_save
 
 
 class User(AbstractBaseUser):
@@ -24,3 +25,26 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(null=True, blank=True)
+    age = models.PositiveSmallIntegerField(null=True, blank=True)
+    phone = models.PositiveIntegerField(null=True, blank=True)
+    street = models.CharField(null=True, blank=True, max_length=200)
+    city = models.CharField(null=True, blank=True, max_length=200)
+    state = models.CharField(null=True, blank=True, max_length=200)
+    zip_code = models.CharField(null=True, blank=True, max_length=200)
+
+    def __str__(self):
+        return self.user.full_name
+
+
+def save_profile(sender, **kwargs):
+    if kwargs['created']:
+        p1 = Profile(user=kwargs['instance'])
+        p1.save()
+
+
+post_save.connect(save_profile, sender=User)

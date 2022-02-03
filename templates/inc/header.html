@@ -42,7 +42,7 @@
                             <a href="{% url 'shop:liked' %}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            <a href="{% url 'accounts:profile' request.user.id %}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="{% url 'cart:cart' %}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{request.session.cart.keys|length}}</span></a>

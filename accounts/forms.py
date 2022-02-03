@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User, Profile
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 
@@ -43,7 +43,7 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(forms.Form):
     full_name = forms.CharField(max_length=30,
-                               widget=forms.TextInput(attrs={'placeholder': 'username'}))
+                                widget=forms.TextInput(attrs={'placeholder': 'username'}))
     email = forms.EmailField(max_length=50,
                              widget=forms.EmailInput(attrs={'placeholder': 'your email'}))
     password1 = forms.CharField(max_length=50, widget=forms.PasswordInput(
@@ -66,3 +66,23 @@ class UserRegistrationForm(forms.Form):
         if p1 and p2:
             if p1 != p2:
                 raise forms.ValidationError('password must match')
+
+
+class EditProfileForm(forms.ModelForm):
+    full_name = forms.CharField(max_length=30,
+                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'full name'}))
+    email = forms.EmailField(max_length=50,
+                             widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'your email'}))
+
+    class Meta:
+        model = Profile
+        fields = ('bio', 'age', 'phone', 'street', 'city', 'state', 'zip_code')
+        widgets = {
+            'bio': forms.TextInput(attrs={'class': 'form-control'}),
+            'age': forms.NumberInput(attrs={'class': 'form-control'}),
+            'phone': forms.NumberInput(attrs={'class': 'form-control'}),
+            'street': forms.TextInput(attrs={'class': 'form-control'}),
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'state': forms.TextInput(attrs={'class': 'form-control'}),
+            'zip_code': forms.TextInput(attrs={'class': 'form-control'}),
+        }

@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from .models import User
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, EditProfileForm
 
 
 def user_login(request):
@@ -48,5 +49,19 @@ def user_logout(request):
     return redirect('company:home')
 
 
-def profile(request):
-    return render(request, 'accounts/profile.html')
+@login_required
+def profile(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=user.profile)
+        if form.is_valid():
+            form.save()
+            user.email = form.cleaned_data['email']
+            user.save()
+            messages.success(request, 'your profile edited successfully', 'success')
+            return redirect('account:profile', user_id)
+    else:
+        form = EditProfileForm(instance=user.profile,
+                               initial={'email': request.user.email,
+                                        'full_name': request.user.full_name})
+    return render(request, 'accounts/profile.html', {'form': form})
