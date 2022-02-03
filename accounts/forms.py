@@ -42,7 +42,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.Form):
-    username = forms.CharField(max_length=30,
+    full_name = forms.CharField(max_length=30,
                                widget=forms.TextInput(attrs={'placeholder': 'username'}))
     email = forms.EmailField(max_length=50,
                              widget=forms.EmailInput(attrs={'placeholder': 'your email'}))

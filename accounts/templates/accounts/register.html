@@ -29,35 +29,36 @@
                     <p>Please register in order to checkout more quickly</p>
                     <!-- Form -->
                     <form class="form" method="post" action="#">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label>Your Name<span>*</span></label>
-                                    <input type="text" name="name" placeholder="" required="required">
+                                    <label>Full Name<span>*</span></label>
+                                    {{form.full_name}}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Your Email<span>*</span></label>
-                                    <input type="text" name="email" placeholder="" required="required">
+                                    {{form.email}}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Your Password<span>*</span></label>
-                                    <input type="password" name="password" placeholder="" required="required">
+                                    {{form.password1}}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Confirm Password<span>*</span></label>
-                                    <input type="password" name="password" placeholder="" required="required">
+                                    {{form.password2}}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group login-btn">
                                     <button class="btn" type="submit">Register</button>
-                                    <a href="login.html" class="btn">Login</a>
+                                    <a href="{% url 'accounts:login' %}" class="btn">Login</a>
                                 </div>
                             </div>
                         </div>

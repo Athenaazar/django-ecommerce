@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
+from .models import User
 
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserRegistrationForm
 
 
 def user_login(request):
@@ -24,7 +25,22 @@ def user_login(request):
 
 
 def register(request):
-    return render(request, 'accounts/register.html')
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            check = User.objects.filter(email__iexact=cd['email']).exists()
+            if check:
+                messages.error(request, 'please take another email !', 'danger')
+            else:
+                user = User.objects.create_user(full_name=cd['full_name'], email=cd['email'], password=cd['password1'])
+                user.save()
+                login(request, user)
+                messages.success(request, 'you registered and login successfully', 'success')
+                return redirect('company:home')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'accounts/register.html', {'form': form})
 
 
 def user_logout(request):
