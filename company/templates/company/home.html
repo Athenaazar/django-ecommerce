@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load filters %}
 {%block content %}
 <!-- Start Area  -->
 <section class="hero-area2">
     <div class="home-slider">
+        {% for product in products|product_featured%}
         <!-- Start Single Slider -->
-        <div class="single-slider overlay" style="background-image:url({% static 'frontend/images/slider/slider-1.jpg' %});">
+        <div class="single-slider overlay" style="background-image:url({{product.images.first.image.url}});">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="content">
-                            <p class="sub-title">Women's Clothing</p>
-                            <h4 class="title">Mega sale up to 50% off for all</h4>
-                            <p class="des">Giordanr Shirt is the best design of Artist Alex Goot. You should got it for your style</p>
+                            <p class="sub-title">{{product.category.first}}</p>
+                            <h4 class="title">{{product.name}}</h4>
+                            <p class="des">{{product.short_descriptions}}</p>
                             <div class="button">
-                                <a href="#" class="btn">Shop Now</a>
+                                <a href="{{product.get_absolute_url}}" class="btn">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -22,6 +24,7 @@
             </div>
         </div>
         <!-- End Single Slider -->
+        {% endfor %}
     </div>
 </section>
 <!--/ End Hero Area -->
