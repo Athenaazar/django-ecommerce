@@ -5,6 +5,8 @@ from shop.models import Product, Category
 
 def home(request):
     products = Product.objects.filter(available=True)
+    producs = products.filter(tag='hot')
+    print(producs)
     categories = Category.objects.filter(is_sub=False, is_featured=True)
     context = {
         'products': products,
