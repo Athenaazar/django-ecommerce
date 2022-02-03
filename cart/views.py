@@ -16,10 +16,12 @@ def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     form = CartAddForm(request.POST)
+    print(form)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'])
     else:
+        print('helllo')
         cart.add(product=product, quantity=1)
     return redirect('cart:cart')
 

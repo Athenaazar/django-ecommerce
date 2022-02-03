@@ -39,6 +39,7 @@ def shop(request, slug=None):
 
 
 def product_details(request, slug):
+    form = CartAddForm()
     review = Review.objects.filter(product__slug=slug)
     product = get_object_or_404(Product, slug=slug)
     if product:
@@ -52,9 +53,10 @@ def product_details(request, slug):
         'product': product,
         'review': review,
         'related_products': related_products,
-        'wishlisted_list': wishlisted_list
+        'wishlisted_list': wishlisted_list,
+        'form': form
     }
-    return render(request, 'shop/product-details.html',context)
+    return render(request, 'shop/product-details.html', context)
 
 
 @login_required
