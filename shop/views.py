@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .forms import ReviewForm
 from .models import Category, Product, Manufacturer, Review, Wishlist
 from django.urls import resolve
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.http import HttpResponse
 from cart.forms import CartAddForm
 
@@ -40,6 +43,7 @@ def shop(request, slug=None):
 
 def product_details(request, slug):
     form = CartAddForm()
+    review_form = ReviewForm()
     review = Review.objects.filter(product__slug=slug)
     product = get_object_or_404(Product, slug=slug)
     if product:
@@ -54,9 +58,25 @@ def product_details(request, slug):
         'review': review,
         'related_products': related_products,
         'wishlisted_list': wishlisted_list,
-        'form': form
+        'form': form,
+        'review_form': review_form
     }
     return render(request, 'shop/product-details.html', context)
+
+
+@login_required
+@require_POST
+def add_review(request, slug):
+    form = ReviewForm(request.POST)
+    product = get_object_or_404(Product, slug=slug)
+    if form.is_valid():
+        cd = form.cleaned_data
+        review = Review(user=request.user, product=product, full_name=cd['full_name'], text=cd['text'])
+        review.save()
+        messages.success(request, 'thanks!', 'success')
+    else:
+        messages.success(request, 'please fill out the form correctly!', 'danger')
+    return redirect('shop:product', slug)
 
 
 @login_required
