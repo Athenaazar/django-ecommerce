@@ -162,6 +162,7 @@
                                                         <!--/ End Single Rating -->
                                                     {% endfor %}
                                                 </div>
+
                                                 <!-- Review -->
                                                 <div class="comment-review">
                                                     <div class="add-review">
@@ -171,6 +172,7 @@
                                                     </div>
                                                 </div>
                                                 <!--/ End Review -->
+                                                {% if request.user.is_authenticated%}
                                                 <!-- Form -->
                                                 <form class="form" method="post" action="#">
                                                     <div class="row">
@@ -203,6 +205,13 @@
                                                     </div>
                                                 </form>
                                                 <!--/ End Form -->
+                                                {% else %}
+                                                 <div class="comment-review">
+                                                    <div class="add-review">
+                                                        <span>You must <a href="{% url 'accounts:login' %}" class="text-danger">"login"</a> before adding comments.</span>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
