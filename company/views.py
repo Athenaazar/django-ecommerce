@@ -1,8 +1,5 @@
 from django.shortcuts import render
-
 from shop.models import Product, Category
-
-from orders.models import Order
 
 
 def home(request):
@@ -13,3 +10,7 @@ def home(request):
         'categories': categories,
     }
     return render(request, 'company/home.html', context)
+
+
+def about(request):
+    return render(request, 'company/about.html')
