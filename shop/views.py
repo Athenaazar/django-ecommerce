@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
 from cart.forms import CartAddForm
+from django.db.models import Q
 
 
 def shop(request, slug=None):
@@ -22,7 +23,7 @@ def shop(request, slug=None):
         elif url_name == 'manufacturer_filter':
             manufacture = get_object_or_404(Manufacturer, slug=slug)
             products = products.filter(manufacturer=manufacture)
-    paginator = Paginator(products, 1)  # Show 25 contacts per page.
+    paginator = Paginator(products, 9)  # Show 9 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     wishlisted_list = []
@@ -109,3 +110,14 @@ def add_to_wishlist(request):
         print("No Product is Found")
 
     return redirect("shop:shop")
+
+
+def search(request):
+    products = Product.objects.filter(available=True)
+    query = request.GET.get('q')
+    if query:
+        products = products.filter(
+            Q(name__icontains=query) | Q(short_descriptions__icontains=query) | Q(descriptions__icontains=query))
+        return render(request, 'shop/search.html', {'products': products,'query':query})
+    else:
+        return redirect("shop:shop")

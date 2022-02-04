@@ -14,3 +14,6 @@ def home(request):
 
 def about(request):
     return render(request, 'company/about.html')
+
+
+
