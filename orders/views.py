@@ -29,7 +29,12 @@ def detail(request, order_id):
         else:
             return redirect('orders:detail', order_id)
     else:
-        order_form = OrderDetailsForm()
+        order_form = OrderDetailsForm(initial={'billing_email_address': request.user.email,
+                                               'billing_name': request.user.full_name,
+                                               'billing_address': request.user.profile.street,
+                                               'billing_city': request.user.profile.city,
+                                               'billing_post_code': request.user.profile.zip_code,
+                                               })
         coupon_form = CouponForm()
         price_dis = order.get_total_without_discount() - order.get_total_price()
         return render(request, 'orders/order.html',
