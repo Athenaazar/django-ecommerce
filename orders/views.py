@@ -33,6 +33,7 @@ def detail(request, order_id):
                                                'billing_name': request.user.full_name,
                                                'billing_address': request.user.profile.street,
                                                'billing_city': request.user.profile.city,
+                                               'billing_country': request.user.profile.country,
                                                'billing_post_code': request.user.profile.zip_code,
                                                })
         coupon_form = CouponForm()

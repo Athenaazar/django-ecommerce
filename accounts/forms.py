@@ -76,13 +76,14 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('bio', 'age', 'phone', 'street', 'city', 'state', 'zip_code')
+        fields = ('bio', 'age', 'phone', 'street', 'city', 'state', 'zip_code','country')
         widgets = {
             'bio': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'about you'}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'age'}),
             'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'phone'}),
             'street': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'street'}),
             'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'city'}),
+            'country': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'country'}),
             'state': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'state'}),
             'zip_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'zip code'}),
         }

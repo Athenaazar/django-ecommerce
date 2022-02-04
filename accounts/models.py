@@ -34,6 +34,7 @@ class Profile(models.Model):
     phone = models.PositiveIntegerField(null=True, blank=True)
     street = models.CharField(null=True, blank=True, max_length=200)
     city = models.CharField(null=True, blank=True, max_length=200)
+    country = models.CharField(null=True, blank=True, max_length=200)
     state = models.CharField(null=True, blank=True, max_length=200)
     zip_code = models.CharField(null=True, blank=True, max_length=200)
 

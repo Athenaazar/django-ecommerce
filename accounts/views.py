@@ -70,6 +70,7 @@ def profile(request, user_id):
                                         'phone': request.user.profile.phone,
                                         'street': request.user.profile.street,
                                         'city': request.user.profile.city,
+                                        'country': request.user.profile.country,
                                         'state': request.user.profile.state,
                                         'zip_code': request.user.profile.zip_code,
                                         })
