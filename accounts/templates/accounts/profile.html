@@ -10,114 +10,159 @@
     height: 100%;
 }
 
+
+
+
+
+
 </style>
 <div class="container" style="margin-top:70px;margin-bottom:70px">
     <div class="row gutters">
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="account-settings">
-                        <div class="user-profile">
-                            <h5 class="user-name">{{request.user.full_name}}</h5>
-                            <h6 class="user-email">{{request.user.email}}</h6>
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-12">
+            <div class="card-box text-center">
+                <img src="{{ request.user.profile.image.url}}"
+                     class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+                <h4 class="mb-0">{{request.user.full_name}}</h4>
+                <p class="text-muted">{{request.user.email}}</p>
+                <br>
+                <label class="btn">
+                    <i class="ti-upload"></i> Upload New photo
+                    {{ form.image }}
+                </label>
+                <br>
+                <br>
+                <br>
+                <div class="about">
+                    <h5 class="mb-2 text-primary">About</h5>
+                    <p>{{request.user.profile.bio}}</p>
+                </div>
+            </div>
+            <hr class="border-light m-0">
+            <div class="pt-0">
+                <div class="list-group list-group-flush account-settings-links">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list"
+                       href="#account-change-password">Change password</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="account-general">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <form method="post" id="profile-form" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h6 class="mb-2 text-primary">Personal Details</h6>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            {{form.full_name}}
+                                            <!--					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            {{form.email}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            {{form.phone}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Age</label>
+                                            {{form.age}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Bio</label>
+                                            {{form.bio}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Country</label>
+                                            {{form.country}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Street</label>
+                                            {{form.street}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            {{form.city}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            {{form.state}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label>Zip Code</label>
+                                            {{form.zip_code}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="about">
-                            <h5>About</h5>
-                            <p>{{request.user.profile.bio}}</p>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="account-change-password">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-2 text-primary">Password</h6>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Current password</label>
+                                        {{form.email}}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>New password</label>
+                                        {{form.email}}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label>Repeat new password</label>
+                                        {{form.email}}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <form method="post" id="profile-form">
-                        {% csrf_token %}
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mb-2 text-primary">Personal Details</h6>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    {{form.full_name}}
-                                    <!--					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">-->
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    {{form.email}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    {{form.phone}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Age</label>
-                                    {{form.age}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Bio</label>
-                                    {{form.bio}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    {{form.country}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mt-3 mb-2 text-primary">Address</h6>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Street</label>
-                                    {{form.street}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>City</label>
-                                    {{form.city}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>State</label>
-                                    {{form.state}}
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Zip Code</label>
-                                    {{form.zip_code}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button type="button"  name="submit" class="btn btn-secondary">Cancel
-                                    </button>
-                                    <button type="submit" id="submit" form="profile-form" name="submit" class="btn btn-primary">Update
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
+            <div class="text-right mt-3">
+                <button type="submit" class="btn btn-primary" form="profile-form" >Save changes</button>
+                <a type="button" href="{% url 'company:home' %}" class="btn btn-default">Back To Home</a>
             </div>
         </div>
     </div>

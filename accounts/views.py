@@ -53,7 +53,7 @@ def user_logout(request):
 def profile(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=user.profile)
+        form = EditProfileForm(request.POST, request.FILES, instance=user.profile)
         if form.is_valid():
             form.save()
             user.email = form.cleaned_data['email']
@@ -73,5 +73,6 @@ def profile(request, user_id):
                                         'country': request.user.profile.country,
                                         'state': request.user.profile.state,
                                         'zip_code': request.user.profile.zip_code,
+                                        'image': request.user.profile.image,
                                         })
     return render(request, 'accounts/profile.html', {'form': form})

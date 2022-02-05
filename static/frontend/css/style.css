@@ -3074,3 +3074,52 @@
     margin-bottom: 1rem;
 }
 
+.ui-w-80 {
+    width: 80px !important;
+    height: auto;
+}
+.btn-default {
+    border-color: rgba(24,28,33,0.1);
+    background: rgba(0,0,0,0);
+    color: #4E5155;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background: transparent;
+    color: #26B4FF;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background: transparent;
+    color: #26B4FF;
+}
+.account-settings-fileinput {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+.avatar-xl {
+    height: 6rem;
+    width: 6rem;
+}
+.card-box {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaed;
+    padding: 1.5rem;
+    margin-bottom: 24px;
+    border-radius: .25rem;
+}

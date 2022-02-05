@@ -151,7 +151,7 @@
                                                         <!-- Single Rating -->
                                                         <div class="single-rating">
                                                             <div class="rating-author">
-                                                                <img src="{% static 'frontend/images/1.png' %}"
+                                                                <img src="{{ request.user.profile.image.url }}"
                                                                      alt="#">
                                                             </div>
                                                             <div class="rating-des">
