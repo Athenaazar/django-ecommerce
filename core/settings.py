@@ -24,7 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-f8c#a)-amjfa2nd^&syh5@!jsn8m34e)d(y3)0q)+^s*pl8og('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+USE_S3 = True
 
 ALLOWED_HOSTS = ['athena-ec.herokuapp.com', '127.0.0.1']
 
@@ -125,30 +126,39 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+if USE_S3:
+    # S3 BUCKETS CONFIG
+    AWS_ACCESS_KEY_ID = 'AKIARI4EK7A6KAFA5CEP'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'athena-dec'
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-MEDIAFILES_DIRS = (MEDIA_ROOT,)
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    STATIC_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = 'core.storage_backends.StaticStorage'
+    # s3 public media settings
+    MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'core.storage_backends.MediaStorage'
+else:
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+    # Default primary key field type
+    # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+    # MEDIAFILES_DIRS = (MEDIA_ROOT,)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51KO5UvJsODTnE8pPzublS0PEqyOtu4spslJiGJo4fNOV5qRvFordWelVElh6WJHmYxLZrXawIRRjDlYMRa85c136009pvo85rV'
 STRIPE_SECRET_KEY = 'sk_test_51KO5UvJsODTnE8pPxDjkqmFGbXy31cd8f9bibzMH5MWQnvRM6U74RuxfDqaxrckIXJWQ3AGo8dvpPpICqX87S11d00gY2LWdTq'
-
-# S3 BUCKETS CONFIG
-AWS_ACCESS_KEY_ID = 'AKIARI4EK7A6NOAMY7XF'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'athena-dec'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
