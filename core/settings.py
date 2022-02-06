@@ -125,7 +125,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 if USE_S3:
     # S3 BUCKETS CONFIG
     AWS_ACCESS_KEY_ID = 'AKIARI4EK7A6KAFA5CEP'
