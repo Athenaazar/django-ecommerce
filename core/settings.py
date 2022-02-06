@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
     'orders.apps.OrdersConfig',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -141,4 +143,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51KO5UvJsODTnE8pPzublS0PEqyOtu4spslJiGJo4fNOV5qRvFordWelVElh6WJHmYxLZrXawIRRjDlYMRa85c136009pvo85rV'
 STRIPE_SECRET_KEY = 'sk_test_51KO5UvJsODTnE8pPxDjkqmFGbXy31cd8f9bibzMH5MWQnvRM6U74RuxfDqaxrckIXJWQ3AGo8dvpPpICqX87S11d00gY2LWdTq'
-STRIPE_WEBHOOK_SECRET = 'whsec_78df242320c3bae1d90128325f5ef8612d5916e35d6722daa4a25d5bb6d1b145'
+
+# S3 BUCKETS CONFIG
+AWS_ACCESS_KEY_ID = 'AKIARI4EK7A6NOAMY7XF'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'athena-dec'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
