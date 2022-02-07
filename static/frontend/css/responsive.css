@@ -1,3 +1,4 @@
+========================================*/
 /* Tablet Screen */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 .section{
@@ -208,7 +209,7 @@
 	padding: 10px 20px;
 }
 .small-banner {
-	padding: 18px 0;	
+	padding: 18px 0;
 }
 .small-banner .single-banner.tab-height{
 	height:300px;
