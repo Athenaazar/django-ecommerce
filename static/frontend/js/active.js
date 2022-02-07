@@ -1,10 +1,10 @@
 (function($) {
     "use strict";
-     $(document).on('ready', function() {	
+     $(document).on('ready', function() {
 
 		/*=======================
 		  Home Slider JS
-		=========================*/ 
+		=========================*/
 		$('.home-slider').owlCarousel({
 			items:1,
 			autoplay:true,
