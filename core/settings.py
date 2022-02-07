@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f8c#a)-amjfa2nd^&syh5@!jsn8m34e)d(y3)0q)+^s*pl8og(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-USE_S3 = False
+USE_S3 = True
 
 ALLOWED_HOSTS = ['athena-ec.herokuapp.com', '127.0.0.1']
 
@@ -92,9 +92,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-# import dj_database_url
-#
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
