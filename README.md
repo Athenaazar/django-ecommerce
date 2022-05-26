@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center">
-  Django Ecommerce Project :<a href="https://athena-ec.herokuapp.com/"> click-here!</a>
+  Django Ecommerce Project :<a href="https://r4m.pythonanywhere.com/"> click-here!</a>
   <br />
   <br />
   <a href="https://github.com/Athenaazar/django-ecommerce/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
