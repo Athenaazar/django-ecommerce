@@ -68,7 +68,7 @@ This is a simple e-commerce website built with Django. It contains the essential
 
 ## Getting Started
 ### Quick demo
-<a href="https://athena-ec.herokuapp.com/"> click-here!</a>
+<a href="https://https://r4m.pythonanywhere.com/"> click-here!</a>
 
 ### Usage
 
